@@ -33,6 +33,13 @@ public class ConfigurationManager {
     private static final String MELTED_RECONNECTION_TIMEOUT_KEY = "melted_reconnection_timeout";
     private static final String MELTED_RECONNECTION_TRIES_KEY = "melted_reconnection_tries";
 
+    /**
+     * This key defines the duration of melted playlist. This is used for
+     * avoiding overloading melted's playlist.
+     * The APND's over melted are controlled by the MeltedProxy class.
+     */
+    private static final String MELTED_PLAYLIST_MAX_DURATION = "melted_playlist_max_duration"; // In Minutes
+
     private static final String MELT_PATH_KEY = "melt_path";
     private static final String FILTER_SERVER_URL_KEY = "filter_server_hostname";
 
@@ -104,6 +111,7 @@ public class ConfigurationManager {
         p.setProperty(MELTED_PORT_KEY, "5250");
         p.setProperty(MELTED_RECONNECTION_TIMEOUT_KEY, "1000");
         p.setProperty(MELTED_RECONNECTION_TRIES_KEY, "0");
+        p.setProperty(MELTED_PLAYLIST_MAX_DURATION, "120"); // 2 hs
 
         p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
         p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
@@ -159,6 +167,10 @@ public class ConfigurationManager {
         return Integer.parseInt(properties.getProperty(MELTED_RECONNECTION_TRIES_KEY));
     }
 
+    public int getMeltedPlaylistMaxDuration(){
+        return Integer.parseInt(properties.getProperty(MELTED_PLAYLIST_MAX_DURATION));
+    }
+
     public String getMeltPath(){
         return properties.getProperty(MELT_PATH_KEY);
     }
@@ -194,6 +206,7 @@ public class ConfigurationManager {
         logger.log(Level.INFO, "MELTED_PORT_KEY: {0}", properties.getProperty(MELTED_PORT_KEY));
         logger.log(Level.INFO, "MELTED_RECONNECTION_TIMEOUT_KEY: {0}", properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY));
         logger.log(Level.INFO, "MELTED_RECONNECTION_TRIES_KEY: {0}", properties.getProperty(MELTED_RECONNECTION_TRIES_KEY));
+        logger.log(Level.INFO, "MELTED_PLAYLIST_MAX_DURATION: {0}", properties.getProperty(MELTED_PLAYLIST_MAX_DURATION));
         logger.log(Level.INFO, "MELT_PATH_KEY: {0}", properties.getProperty(MELT_PATH_KEY));
         logger.log(Level.INFO, "FILTER_SERVER_URL_KEY: {0}", properties.getProperty(FILTER_SERVER_URL_KEY));
         logger.log(Level.INFO, "BASH_TIMEOUT_KEY: {0}", properties.getProperty(BASH_TIMEOUT_KEY));
