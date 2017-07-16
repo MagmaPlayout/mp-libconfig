@@ -32,20 +32,28 @@ public class ConfigurationManager {
     private static final String MELTED_PORT_KEY = "melted_server_port";
     private static final String MELTED_RECONNECTION_TIMEOUT_KEY = "melted_reconnection_timeout";
     private static final String MELTED_RECONNECTION_TRIES_KEY = "melted_reconnection_tries";
-
     /**
      * This key defines the duration of melted playlist. This is used for
      * avoiding overloading melted's playlist.
      * The APND's over melted are controlled by the MeltedProxy class.
+     *
+     * In Minutes
      */
-    private static final String MELTED_PLAYLIST_MAX_DURATION = "melted_playlist_max_duration";  // In Minutes
-    
+    private static final String MELTED_PLAYLIST_MAX_DURATION = "melted_playlist_max_duration";
     /**
      * This key defines the polling interval for the melted appender module.
+     *
+     * In Minutes
      */
-    private static final String MELTED_APPENDER_WORKER_FREQ = "melted_appender_worker_freq";    // In Minutes
-
+    private static final String MELTED_APPENDER_WORKER_FREQ = "melted_appender_worker_freq";
     private static final String MELT_PATH_KEY = "melt_path";
+
+    /**
+     * The path of the default media that will be played when there's nothing else loaded.
+     * Must be an "MLT XML" .mlt file
+     */
+    private static final String DEFAULT_MEDIA_PATH = "default_media_path";
+
     private static final String FILTER_SERVER_URL_KEY = "filter_server_hostname";
 
     private static final String BASH_TIMEOUT_KEY = "bash_timeout_ms";
@@ -119,6 +127,8 @@ public class ConfigurationManager {
         p.setProperty(MELTED_PLAYLIST_MAX_DURATION, "120"); // 2 hs
         p.setProperty(MELTED_APPENDER_WORKER_FREQ, "5");    // 5 mins
 
+        p.setProperty(DEFAULT_MEDIA_PATH, "~/default.mlt");
+
         p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
         p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
         p.setProperty(BASH_TIMEOUT_KEY, "5000");
@@ -185,6 +195,10 @@ public class ConfigurationManager {
         return properties.getProperty(MELT_PATH_KEY);
     }
 
+    public String getDefaultMediaPath(){
+        return properties.getProperty(DEFAULT_MEDIA_PATH);
+    }
+
     public String getFilterServerHost(){
         return properties.getProperty(FILTER_SERVER_URL_KEY);
     }
@@ -219,6 +233,7 @@ public class ConfigurationManager {
         logger.log(Level.INFO, "MELTED_PLAYLIST_MAX_DURATION: {0}", properties.getProperty(MELTED_PLAYLIST_MAX_DURATION));
         logger.log(Level.INFO, "MELTED_APPENDER_WORKER_FREQ: {0}", properties.getProperty(MELTED_APPENDER_WORKER_FREQ));
         logger.log(Level.INFO, "MELT_PATH_KEY: {0}", properties.getProperty(MELT_PATH_KEY));
+        logger.log(Level.INFO, "DEFAULT_MEDIA_PATH: {0}", properties.getProperty(DEFAULT_MEDIA_PATH));
         logger.log(Level.INFO, "FILTER_SERVER_URL_KEY: {0}", properties.getProperty(FILTER_SERVER_URL_KEY));
         logger.log(Level.INFO, "BASH_TIMEOUT_KEY: {0}", properties.getProperty(BASH_TIMEOUT_KEY));
         logger.log(Level.INFO, "REST_BASE_URL: {0}", properties.getProperty(REST_BASE_URL));
