@@ -63,6 +63,9 @@ public class ConfigurationManager {
 
     private static final String BASH_TIMEOUT_KEY = "bash_timeout_ms";
 
+    /**
+     * URL of mp-playout-api. Must be a valid URL.
+     */
     private static final String PLAYOUT_API_URL = "playout_api_url";
 
     private Properties properties;
@@ -139,7 +142,7 @@ public class ConfigurationManager {
         p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
         p.setProperty(BASH_TIMEOUT_KEY, "5000");
 
-        p.setProperty(PLAYOUT_API_URL, "localhost:8001/api/");
+        p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
 
         return p;
     }
