@@ -54,11 +54,16 @@ public class ConfigurationManager {
      */
     private static final String DEFAULT_MEDIA_PATH = "default_media_path";
 
+    /**
+     * The path where the spacers mlt files are going to be generated.
+     */
+    private static final String MLT_SPACERS_PATH = "mlt_spacers_path";
+
     private static final String FILTER_SERVER_URL_KEY = "filter_server_hostname";
 
     private static final String BASH_TIMEOUT_KEY = "bash_timeout_ms";
 
-    private static final String REST_BASE_URL = "rest_base_url";
+    private static final String PLAYOUT_API_URL = "playout_api_url";
 
     private Properties properties;
 
@@ -128,12 +133,13 @@ public class ConfigurationManager {
         p.setProperty(MELTED_APPENDER_WORKER_FREQ, "5");    // 5 mins
 
         p.setProperty(DEFAULT_MEDIA_PATH, "~/default.mlt");
+        p.setProperty(MLT_SPACERS_PATH, "~/spacers/");
 
         p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
         p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
         p.setProperty(BASH_TIMEOUT_KEY, "5000");
 
-        p.setProperty(REST_BASE_URL, "localhost:8001/api/");
+        p.setProperty(PLAYOUT_API_URL, "localhost:8001/api/");
 
         return p;
     }
@@ -199,6 +205,10 @@ public class ConfigurationManager {
         return properties.getProperty(DEFAULT_MEDIA_PATH);
     }
 
+    public String getMltSpacersPath(){
+        return properties.getProperty(MLT_SPACERS_PATH);
+    }
+
     public String getFilterServerHost(){
         return properties.getProperty(FILTER_SERVER_URL_KEY);
     }
@@ -207,7 +217,7 @@ public class ConfigurationManager {
     }
 
     public String getRestBaseUrl(){
-        return properties.getProperty(REST_BASE_URL);
+        return properties.getProperty(PLAYOUT_API_URL);
     }
 
     /**
@@ -234,9 +244,10 @@ public class ConfigurationManager {
         logger.log(Level.INFO, "MELTED_APPENDER_WORKER_FREQ: {0}", properties.getProperty(MELTED_APPENDER_WORKER_FREQ));
         logger.log(Level.INFO, "MELT_PATH_KEY: {0}", properties.getProperty(MELT_PATH_KEY));
         logger.log(Level.INFO, "DEFAULT_MEDIA_PATH: {0}", properties.getProperty(DEFAULT_MEDIA_PATH));
+        logger.log(Level.INFO, "MLT_SPACERS_PATH: {0}", properties.getProperty(MLT_SPACERS_PATH));
         logger.log(Level.INFO, "FILTER_SERVER_URL_KEY: {0}", properties.getProperty(FILTER_SERVER_URL_KEY));
         logger.log(Level.INFO, "BASH_TIMEOUT_KEY: {0}", properties.getProperty(BASH_TIMEOUT_KEY));
-        logger.log(Level.INFO, "REST_BASE_URL: {0}", properties.getProperty(REST_BASE_URL));
+        logger.log(Level.INFO, "REST_BASE_URL: {0}", properties.getProperty(PLAYOUT_API_URL));
         logger.log(Level.INFO, "-----------------------------------------------------------");
     }
 }
