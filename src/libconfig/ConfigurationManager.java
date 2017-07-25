@@ -56,6 +56,7 @@ public class ConfigurationManager {
 
     /**
      * The path where the spacers mlt files are going to be generated.
+     * Needs to be an absolute path (without shell modifiers like ~/)
      */
     private static final String MLT_SPACERS_PATH = "mlt_spacers_path";
 
@@ -136,7 +137,7 @@ public class ConfigurationManager {
         p.setProperty(MELTED_APPENDER_WORKER_FREQ, "5");    // 5 mins
 
         p.setProperty(DEFAULT_MEDIA_PATH, "~/default.mlt");
-        p.setProperty(MLT_SPACERS_PATH, "~/spacers/");
+        p.setProperty(MLT_SPACERS_PATH, "/usr/local/magma-playout/spacers/");
 
         p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
         p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
