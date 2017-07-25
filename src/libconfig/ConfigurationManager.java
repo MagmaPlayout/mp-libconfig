@@ -232,27 +232,29 @@ public class ConfigurationManager {
      * @param logger
      */
     public void printConfig(Logger logger){
-        logger.log(Level.INFO, "Loaded configuration: -------------------------------------");
-        logger.log(Level.INFO, "CONFIG_PATH: {0}", ConfigurationManager.CONFIG_PATH);
-        logger.log(Level.INFO, "REDIS_HOST_KEY: {0}", properties.getProperty(REDIS_HOST_KEY));
-        logger.log(Level.INFO, "REDIS_PORT_KEY: {0}", properties.getProperty(REDIS_PORT_KEY));
-        logger.log(Level.INFO, "REDIS_PCCP_CHANNEL_KEY: {0}", properties.getProperty(REDIS_PCCP_CHANNEL_KEY));
-        logger.log(Level.INFO, "REDIS_FSCP_CHANNEL_KEY: {0}", properties.getProperty(REDIS_FSCP_CHANNEL_KEY));
-        logger.log(Level.INFO, "REDIS_PCR_CHANNEL_KEY: {0}", properties.getProperty(REDIS_PCR_CHANNEL_KEY));
-        logger.log(Level.INFO, "REDIS_MSTA_CHANNEL_KEY: {0}", properties.getProperty(REDIS_MSTA_CHANNEL_KEY));
-        logger.log(Level.INFO, "REDIS_RECONNECTION_TIMEOUT_KEY: {0}", properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY));
-        logger.log(Level.INFO, "MELTED_HOST_KEY: {0}", properties.getProperty(MELTED_HOST_KEY));
-        logger.log(Level.INFO, "MELTED_PORT_KEY: {0}", properties.getProperty(MELTED_PORT_KEY));
-        logger.log(Level.INFO, "MELTED_RECONNECTION_TIMEOUT_KEY: {0}", properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY));
-        logger.log(Level.INFO, "MELTED_RECONNECTION_TRIES_KEY: {0}", properties.getProperty(MELTED_RECONNECTION_TRIES_KEY));
-        logger.log(Level.INFO, "MELTED_PLAYLIST_MAX_DURATION: {0}", properties.getProperty(MELTED_PLAYLIST_MAX_DURATION));
-        logger.log(Level.INFO, "MELTED_APPENDER_WORKER_FREQ: {0}", properties.getProperty(MELTED_APPENDER_WORKER_FREQ));
-        logger.log(Level.INFO, "MELT_PATH_KEY: {0}", properties.getProperty(MELT_PATH_KEY));
-        logger.log(Level.INFO, "DEFAULT_MEDIA_PATH: {0}", properties.getProperty(DEFAULT_MEDIA_PATH));
-        logger.log(Level.INFO, "MLT_SPACERS_PATH: {0}", properties.getProperty(MLT_SPACERS_PATH));
-        logger.log(Level.INFO, "FILTER_SERVER_URL_KEY: {0}", properties.getProperty(FILTER_SERVER_URL_KEY));
-        logger.log(Level.INFO, "BASH_TIMEOUT_KEY: {0}", properties.getProperty(BASH_TIMEOUT_KEY));
-        logger.log(Level.INFO, "REST_BASE_URL: {0}", properties.getProperty(PLAYOUT_API_URL));
-        logger.log(Level.INFO, "-----------------------------------------------------------");
+        logger.log(Level.INFO,
+            "Loaded configuration: -------------------------------------"
+            +"\nCONFIG_PATH: " + ConfigurationManager.CONFIG_PATH
+            +"\nREDIS_HOST_KEY: " + properties.getProperty(REDIS_HOST_KEY)
+            +"\nREDIS_PORT_KEY: " + properties.getProperty(REDIS_PORT_KEY)
+            +"\nREDIS_PCCP_CHANNEL_KEY: " + properties.getProperty(REDIS_PCCP_CHANNEL_KEY)
+            +"\nREDIS_FSCP_CHANNEL_KEY: " + properties.getProperty(REDIS_FSCP_CHANNEL_KEY)
+            +"\nREDIS_PCR_CHANNEL_KEY: " + properties.getProperty(REDIS_PCR_CHANNEL_KEY)
+            +"\nREDIS_MSTA_CHANNEL_KEY: " + properties.getProperty(REDIS_MSTA_CHANNEL_KEY)
+            +"\nREDIS_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY)
+            +"\nMELTED_HOST_KEY: " + properties.getProperty(MELTED_HOST_KEY)
+            +"\nMELTED_PORT_KEY: " + properties.getProperty(MELTED_PORT_KEY)
+            +"\nMELTED_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY)
+            +"\nMELTED_RECONNECTION_TRIES_KEY: " + properties.getProperty(MELTED_RECONNECTION_TRIES_KEY)
+            +"\nMELTED_PLAYLIST_MAX_DURATION: " + properties.getProperty(MELTED_PLAYLIST_MAX_DURATION)
+            +"\nMELTED_APPENDER_WORKER_FREQ: " + properties.getProperty(MELTED_APPENDER_WORKER_FREQ)
+            +"\nMELT_PATH_KEY: " + properties.getProperty(MELT_PATH_KEY)
+            +"\nDEFAULT_MEDIA_PATH: " + properties.getProperty(DEFAULT_MEDIA_PATH)
+            +"\nMLT_SPACERS_PATH: " + properties.getProperty(MLT_SPACERS_PATH)
+            +"\nFILTER_SERVER_URL_KEY: " + properties.getProperty(FILTER_SERVER_URL_KEY)
+            +"\nBASH_TIMEOUT_KEY: " + properties.getProperty(BASH_TIMEOUT_KEY)
+            +"\nREST_BASE_URL: " + properties.getProperty(PLAYOUT_API_URL)
+            +"\n-----------------------------------------------------------"
+        );
     }
 }
