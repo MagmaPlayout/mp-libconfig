@@ -50,7 +50,8 @@ public class ConfigurationManager {
 
     /**
      * The path of the default media that will be played when there's nothing else loaded.
-     * Must be an "MLT XML" .mlt file
+     * Must be an "MLT XML" .mlt file.
+     * Must be an absolute path without shell modifiers like ~/
      */
     private static final String DEFAULT_MEDIA_PATH = "default_media_path";
 
@@ -136,7 +137,7 @@ public class ConfigurationManager {
         p.setProperty(MELTED_PLAYLIST_MAX_DURATION, "120"); // 2 hs
         p.setProperty(MELTED_APPENDER_WORKER_FREQ, "5");    // 5 mins
 
-        p.setProperty(DEFAULT_MEDIA_PATH, "~/default.mlt");
+        p.setProperty(DEFAULT_MEDIA_PATH, "/usr/local/magma-playout/default.mlt");
         p.setProperty(MLT_SPACERS_PATH, "/usr/local/magma-playout/spacers/");
 
         p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
