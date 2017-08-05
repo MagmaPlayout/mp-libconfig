@@ -233,28 +233,28 @@ public class ConfigurationManager {
      */
     public void printConfig(Logger logger){
         logger.log(Level.INFO,
-            "Loaded configuration: -------------------------------------"
-            +"\nCONFIG_PATH: " + ConfigurationManager.CONFIG_PATH
-            +"\nREDIS_HOST_KEY: " + properties.getProperty(REDIS_HOST_KEY)
-            +"\nREDIS_PORT_KEY: " + properties.getProperty(REDIS_PORT_KEY)
-            +"\nREDIS_PCCP_CHANNEL_KEY: " + properties.getProperty(REDIS_PCCP_CHANNEL_KEY)
-            +"\nREDIS_FSCP_CHANNEL_KEY: " + properties.getProperty(REDIS_FSCP_CHANNEL_KEY)
-            +"\nREDIS_PCR_CHANNEL_KEY: " + properties.getProperty(REDIS_PCR_CHANNEL_KEY)
-            +"\nREDIS_MSTA_CHANNEL_KEY: " + properties.getProperty(REDIS_MSTA_CHANNEL_KEY)
-            +"\nREDIS_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY)
-            +"\nMELTED_HOST_KEY: " + properties.getProperty(MELTED_HOST_KEY)
-            +"\nMELTED_PORT_KEY: " + properties.getProperty(MELTED_PORT_KEY)
-            +"\nMELTED_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY)
-            +"\nMELTED_RECONNECTION_TRIES_KEY: " + properties.getProperty(MELTED_RECONNECTION_TRIES_KEY)
-            +"\nMELTED_PLAYLIST_MAX_DURATION: " + properties.getProperty(MELTED_PLAYLIST_MAX_DURATION)
-            +"\nMELTED_APPENDER_WORKER_FREQ: " + properties.getProperty(MELTED_APPENDER_WORKER_FREQ)
-            +"\nMELT_PATH_KEY: " + properties.getProperty(MELT_PATH_KEY)
-            +"\nDEFAULT_MEDIA_PATH: " + properties.getProperty(DEFAULT_MEDIA_PATH)
-            +"\nMLT_SPACERS_PATH: " + properties.getProperty(MLT_SPACERS_PATH)
-            +"\nFILTER_SERVER_URL_KEY: " + properties.getProperty(FILTER_SERVER_URL_KEY)
-            +"\nBASH_TIMEOUT_KEY: " + properties.getProperty(BASH_TIMEOUT_KEY)
-            +"\nREST_BASE_URL: " + properties.getProperty(PLAYOUT_API_URL)
-            +"\n-----------------------------------------------------------"
+            "Loaded configuration:\n"
+            +"\n\tCONFIG_PATH: " + ConfigurationManager.CONFIG_PATH
+            +"\n\tREDIS_HOST_KEY: " + properties.getProperty(REDIS_HOST_KEY)
+            +"\n\tREDIS_PORT_KEY: " + properties.getProperty(REDIS_PORT_KEY)
+            +"\n\tREDIS_PCCP_CHANNEL_KEY: " + properties.getProperty(REDIS_PCCP_CHANNEL_KEY)
+            +"\n\tREDIS_FSCP_CHANNEL_KEY: " + properties.getProperty(REDIS_FSCP_CHANNEL_KEY)
+            +"\n\tREDIS_PCR_CHANNEL_KEY: " + properties.getProperty(REDIS_PCR_CHANNEL_KEY)
+            +"\n\tREDIS_MSTA_CHANNEL_KEY: " + properties.getProperty(REDIS_MSTA_CHANNEL_KEY)
+            +"\n\tREDIS_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY)
+            +"\n\tMELTED_HOST_KEY: " + properties.getProperty(MELTED_HOST_KEY)
+            +"\n\tMELTED_PORT_KEY: " + properties.getProperty(MELTED_PORT_KEY)
+            +"\n\tMELTED_RECONNECTION_TIMEOUT_KEY: " + properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY)
+            +"\n\tMELTED_RECONNECTION_TRIES_KEY: " + properties.getProperty(MELTED_RECONNECTION_TRIES_KEY)
+            +"\n\tMELTED_PLAYLIST_MAX_DURATION: " + properties.getProperty(MELTED_PLAYLIST_MAX_DURATION)
+            +"\n\tMELTED_APPENDER_WORKER_FREQ: " + properties.getProperty(MELTED_APPENDER_WORKER_FREQ)
+            +"\n\tMELT_PATH_KEY: " + properties.getProperty(MELT_PATH_KEY)
+            +"\n\tDEFAULT_MEDIA_PATH: " + properties.getProperty(DEFAULT_MEDIA_PATH)
+            +"\n\tMLT_SPACERS_PATH: " + properties.getProperty(MLT_SPACERS_PATH)
+            +"\n\tFILTER_SERVER_URL_KEY: " + properties.getProperty(FILTER_SERVER_URL_KEY)
+            +"\n\tBASH_TIMEOUT_KEY: " + properties.getProperty(BASH_TIMEOUT_KEY)
+            +"\n\tREST_BASE_URL: " + properties.getProperty(PLAYOUT_API_URL)
+            +"\n"
         );
     }
 }
