@@ -70,6 +70,12 @@ public class ConfigurationManager {
      */
     private static final String PLAYOUT_API_URL = "playout_api_url";
 
+    /**
+     * The FPS of all medias loaded in the system.
+     * Note that if you change this you'll have to reload all your medias and pieces with the new configuration.
+     */
+    private static final String MEDIAS_FPS = "medias_fps";
+
     private Properties properties;
 
     private ConfigurationManager(){
@@ -145,6 +151,7 @@ public class ConfigurationManager {
         p.setProperty(BASH_TIMEOUT_KEY, "5000");
 
         p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
+        p.setProperty(MEDIAS_FPS, "60");
 
         return p;
     }
@@ -217,6 +224,7 @@ public class ConfigurationManager {
     public String getFilterServerHost(){
         return properties.getProperty(FILTER_SERVER_URL_KEY);
     }
+
     public int getMeltXmlTimeout(){
         return Integer.parseInt(properties.getProperty(BASH_TIMEOUT_KEY));
     }
@@ -225,6 +233,10 @@ public class ConfigurationManager {
         return properties.getProperty(PLAYOUT_API_URL);
     }
 
+    public int getMediasFPS(){
+        return Integer.parseInt(properties.getProperty(MEDIAS_FPS));
+    }
+    
     /**
      * Logs all the parameters loaded.
      * For debug use.
@@ -254,6 +266,7 @@ public class ConfigurationManager {
             +"\n\tFILTER_SERVER_URL_KEY: " + properties.getProperty(FILTER_SERVER_URL_KEY)
             +"\n\tBASH_TIMEOUT_KEY: " + properties.getProperty(BASH_TIMEOUT_KEY)
             +"\n\tREST_BASE_URL: " + properties.getProperty(PLAYOUT_API_URL)
+            +"\n\tMEDIAS_FPS: " + properties.getProperty(MEDIAS_FPS)
             +"\n"
         );
     }
