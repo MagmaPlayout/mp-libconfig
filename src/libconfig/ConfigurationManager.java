@@ -73,8 +73,20 @@ public class ConfigurationManager {
     /**
      * The FPS of all medias loaded in the system.
      * Note that if you change this you'll have to reload all your medias and pieces with the new configuration.
-     */
+     */    
+    
     private static final String MEDIAS_FPS = "medias_fps";
+    
+    /**
+     * MP-Devourer
+     */
+    private static final String DEVOURER_INPUT_DIR = "devourer_input_dir";
+    private static final String DEVOURER_OUTPUT_DIR = "devourer_output_dir";
+    private static final String DEVOURER_MEDIA_DIR = "devourer_media_dir";
+    private static final String DEVOURER_THUMB_DIR = "devourer_thumb_dir";
+    private static final String DEVOURER_FFMPEG_PATH = "devourer_ffmpeg_path";
+    private static final String DEVOURER_FFPROBE_PATH = "devourer_ffprobe_path";
+    private static final String DEVOURER_MELT_PATH = "devourer_melt_path";
 
     private Properties properties;
 
@@ -152,6 +164,15 @@ public class ConfigurationManager {
 
         p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
         p.setProperty(MEDIAS_FPS, "60");
+        
+        p.setProperty(DEVOURER_INPUT_DIR, "EDIT ME!--> ~/Videos/input");
+        p.setProperty(DEVOURER_OUTPUT_DIR, "EDIT ME!--> ~/Videos/output");
+        p.setProperty(DEVOURER_MEDIA_DIR, "EDIT ME!--> ~/Videos/");
+        p.setProperty(DEVOURER_THUMB_DIR, "EDIT ME!--> /XXX/mp-installer/magma-playout/gui/mp-ui-playout/src/assets/img");
+        p.setProperty(DEVOURER_FFMPEG_PATH, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/ffmpeg");
+        p.setProperty(DEVOURER_FFPROBE_PATH, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/ffprobe");
+        p.setProperty(DEVOURER_MELT_PATH, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/melt");
+        
 
         return p;
     }
@@ -236,6 +257,36 @@ public class ConfigurationManager {
     public int getMediasFPS(){
         return Integer.parseInt(properties.getProperty(MEDIAS_FPS));
     }
+
+    public String getDevourerInputDir() {
+        return properties.getProperty(DEVOURER_INPUT_DIR);
+    }
+
+    public String getDevourerOutputDir() {
+        return properties.getProperty(DEVOURER_OUTPUT_DIR);
+    }
+
+    public String getDevourerMediaDir() {
+        return properties.getProperty(DEVOURER_MEDIA_DIR);
+    }
+
+    public String getDevourerThumbDir() {
+        return properties.getProperty(DEVOURER_THUMB_DIR);
+    }
+
+    public String getDevourerFfmpegPath() {
+        return properties.getProperty(DEVOURER_FFMPEG_PATH);
+    }
+
+    public String getDevourerFfprobePath() {
+        return properties.getProperty(DEVOURER_FFPROBE_PATH);
+    }
+
+    public String getDevourerMeltPath() {
+        return properties.getProperty(DEVOURER_MELT_PATH);
+    }
+    
+    
     
     /**
      * Logs all the parameters loaded.
@@ -267,6 +318,13 @@ public class ConfigurationManager {
             +"\n\tBASH_TIMEOUT_KEY: " + properties.getProperty(BASH_TIMEOUT_KEY)
             +"\n\tREST_BASE_URL: " + properties.getProperty(PLAYOUT_API_URL)
             +"\n\tMEDIAS_FPS: " + properties.getProperty(MEDIAS_FPS)
+            +"\n\tDEVOURER_INPUT_DIR: " + properties.getProperty(DEVOURER_INPUT_DIR)
+            +"\n\tDEVOURER_OUTPUT_DIR: " + properties.getProperty(DEVOURER_OUTPUT_DIR)
+            +"\n\tDEVOURER_MEDIA_DIR: " + properties.getProperty(DEVOURER_MEDIA_DIR)
+            +"\n\tDEVOURER_THUMB_DIR: " + properties.getProperty(DEVOURER_THUMB_DIR)
+            +"\n\tDEVOURER_FFMPEG_PATH: " + properties.getProperty(DEVOURER_FFMPEG_PATH)
+            +"\n\tDEVOURER_FFPROBE_PATH: " + properties.getProperty(DEVOURER_FFPROBE_PATH)        
+            +"\n\tDEVOURER_MELT_PATH: " + properties.getProperty(DEVOURER_MELT_PATH)        
             +"\n"
         );
     }
