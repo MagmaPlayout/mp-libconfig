@@ -84,6 +84,7 @@ public class ConfigurationManager {
     private static final String DEVOURER_OUTPUT_DIR = "devourer_output_dir";
     private static final String DEVOURER_MEDIA_DIR = "devourer_media_dir";
     private static final String DEVOURER_THUMB_DIR = "devourer_thumb_dir";
+    private static final String DEVOURER_FFMPEG_ARGS = "devourer_ffmpeg_args";
     
     private Properties properties;
 
@@ -166,7 +167,8 @@ public class ConfigurationManager {
         p.setProperty(DEVOURER_OUTPUT_DIR, "EDIT ME!--> ~/Videos/output");
         p.setProperty(DEVOURER_MEDIA_DIR, ""); // Not used at the moment. Possiblly to store a remote path
         p.setProperty(DEVOURER_THUMB_DIR, "EDIT ME!--> /XXX/mp-installer/magma-playout/gui/mp-ui-playout/src/assets/img");
-        p.setProperty(MLT_FRAMEWORK_DIR, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/ffmpeg");
+        p.setProperty(DEVOURER_FFMPEG_ARGS, "-f avi -c:v libx264 -qp 0");
+        p.setProperty(MLT_FRAMEWORK_DIR, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/ffmpeg"); //TODO agregar esta config en el script de installer
         
         return p;
     }
@@ -271,6 +273,10 @@ public class ConfigurationManager {
     public String getMltFrameworkPath() {
         return properties.getProperty(MLT_FRAMEWORK_DIR);
     }
+
+    public String getDevourerFfmpegArgs(){
+        return properties.getProperty(DEVOURER_FFMPEG_ARGS);
+    }
     
     
     /**
@@ -308,6 +314,7 @@ public class ConfigurationManager {
             //+"\n\tdevourer_media_dir: " + properties.getProperty(DEVOURER_MEDIA_DIR) // Not implemented
             +"\n\tdevourer_thumb_dir: " + properties.getProperty(DEVOURER_THUMB_DIR)
             +"\n\tmlt_framework_dir: " + properties.getProperty(MLT_FRAMEWORK_DIR)
+            +"\n\tdevourer_ffmpeg_args: " + properties.getProperty(DEVOURER_FFMPEG_ARGS)
             +"\n"
         );
     }
