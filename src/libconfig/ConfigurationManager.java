@@ -71,6 +71,11 @@ public class ConfigurationManager {
     private static final String PLAYOUT_API_URL = "playout_api_url";
 
     /**
+     * URL of mp-admin-api. Must be a valid URL.
+     */
+    private static final String ADMIN_API_URL = "admin_api_url";
+
+    /**
      * The FPS of all medias loaded in the system.
      * Note that if you change this you'll have to reload all your medias and pieces with the new configuration.
      */    
@@ -161,6 +166,7 @@ public class ConfigurationManager {
         p.setProperty(BASH_TIMEOUT_KEY, "5000");
 
         p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
+        p.setProperty(ADMIN_API_URL, "http://localhost:8080/api/");
         p.setProperty(MEDIAS_FPS, "60");
         
         p.setProperty(DEVOURER_INPUT_DIR, "EDIT ME!--> ~/Videos/input");
@@ -246,8 +252,12 @@ public class ConfigurationManager {
         return Integer.parseInt(properties.getProperty(BASH_TIMEOUT_KEY));
     }
 
-    public String getRestBaseUrl(){
+    public String getPlayoutAPIRestBaseUrl(){
         return properties.getProperty(PLAYOUT_API_URL);
+    }
+
+    public String getAdminAPIRestBaseUrl(){
+        return properties.getProperty(ADMIN_API_URL);
     }
 
     public int getMediasFPS(){
@@ -315,6 +325,8 @@ public class ConfigurationManager {
             +"\n\tdevourer_thumb_dir: " + properties.getProperty(DEVOURER_THUMB_DIR)
             +"\n\tmlt_framework_dir: " + properties.getProperty(MLT_FRAMEWORK_DIR)
             +"\n\tdevourer_ffmpeg_args: " + properties.getProperty(DEVOURER_FFMPEG_ARGS)
+            +"\n\tplayout_api_url: " + properties.getProperty(PLAYOUT_API_URL)
+            +"\n\tadmin_api_url: " + properties.getProperty(ADMIN_API_URL)
             +"\n"
         );
     }
