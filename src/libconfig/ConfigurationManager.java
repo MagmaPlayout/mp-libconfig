@@ -317,7 +317,6 @@ public class ConfigurationManager {
             +"\n\tmlt_spacers_path: " + properties.getProperty(MLT_SPACERS_PATH)
             +"\n\tfilter_server_url_key: " + properties.getProperty(FILTER_SERVER_URL_KEY)
             +"\n\tbash_timeout_key: " + properties.getProperty(BASH_TIMEOUT_KEY)
-            +"\n\trest_base_url: " + properties.getProperty(PLAYOUT_API_URL)
             +"\n\tmedias_fps: " + properties.getProperty(MEDIAS_FPS)
             +"\n\tdevourer_input_dir: " + properties.getProperty(DEVOURER_INPUT_DIR)
             +"\n\tdevourer_output_dir: " + properties.getProperty(DEVOURER_OUTPUT_DIR)
