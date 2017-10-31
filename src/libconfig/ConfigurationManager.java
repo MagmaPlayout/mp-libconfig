@@ -63,8 +63,6 @@ public class ConfigurationManager {
 
     private static final String FILTER_SERVER_HOSTNAME = "filter_server_hostname";
 
-    private static final String BASH_TIMEOUT_MS = "bash_timeout_ms"; 
-
     /**
      * URL of mp-playout-api. Must be a valid URL.
      */
@@ -163,7 +161,6 @@ public class ConfigurationManager {
 
         p.setProperty(MELT_PATH, "/usr/bin/melt/melt");
         p.setProperty(FILTER_SERVER_HOSTNAME, "http://localhost:3001/filter-banner.html");
-        p.setProperty(BASH_TIMEOUT_MS, "5000");
 
         p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
         p.setProperty(ADMIN_API_URL, "http://localhost:8080/api/");
@@ -248,10 +245,6 @@ public class ConfigurationManager {
         return properties.getProperty(FILTER_SERVER_HOSTNAME);
     }
 
-    public int getMeltXmlTimeout(){
-        return Integer.parseInt(properties.getProperty(BASH_TIMEOUT_MS));
-    }
-
     public String getPlayoutAPIRestBaseUrl(){
         return properties.getProperty(PLAYOUT_API_URL);
     }
@@ -316,7 +309,6 @@ public class ConfigurationManager {
             +"\n\tdefault_media_path: " + properties.getProperty(DEFAULT_MEDIA_PATH)
             +"\n\tmlt_spacers_path: " + properties.getProperty(MLT_SPACERS_PATH)
             //+"\n\tfilter_server_url_key: " + properties.getProperty(FILTER_SERVER_URL_KEY)
-            +"\n\tbash_timeout_ms: " + properties.getProperty(BASH_TIMEOUT_MS)
             +"\n\tmedias_fps: " + properties.getProperty(MEDIAS_FPS)
             +"\n\tdevourer_input_dir: " + properties.getProperty(DEVOURER_INPUT_DIR)
             +"\n\tdevourer_output_dir: " + properties.getProperty(DEVOURER_OUTPUT_DIR)
