@@ -20,18 +20,18 @@ public class ConfigurationManager {
 
     private static final String CONFIG_PATH = System.getProperty("user.home")+File.separator+".magma-playout.conf";
 
-    private static final String REDIS_HOST_KEY = "redis_server_hostname";
-    private static final String REDIS_PORT_KEY = "redis_server_port";
-    private static final String REDIS_PCCP_CHANNEL_KEY = "redis_pccp_channel";
-    private static final String REDIS_FSCP_CHANNEL_KEY = "redis_fscp_channel";
-    private static final String REDIS_PCR_CHANNEL_KEY = "redis_pcr_channel";
-    private static final String REDIS_MSTA_CHANNEL_KEY = "redis_msta_channel";
-    private static final String REDIS_RECONNECTION_TIMEOUT_KEY = "redis_reconnection_timeout";
+    private static final String REDIS_SERVER_HOSTNAME = "redis_server_hostname";
+    private static final String REDIS_SERVER_PORT = "redis_server_port";
+    private static final String REDIS_PCCP_CHANNEL = "redis_pccp_channel";
+    private static final String REDIS_FSCP_CHANNEL = "redis_fscp_channel";
+    private static final String REDIS_PCR_CHANNEL = "redis_pcr_channel";
+    private static final String REDIS_MSTA_CHANNEL = "redis_msta_channel";
+    private static final String REDIS_RECONNECTION_TIMEOUT = "redis_reconnection_timeout";
 
-    private static final String MELTED_HOST_KEY = "melted_server_hostname";
-    private static final String MELTED_PORT_KEY = "melted_server_port";
-    private static final String MELTED_RECONNECTION_TIMEOUT_KEY = "melted_reconnection_timeout";
-    private static final String MELTED_RECONNECTION_TRIES_KEY = "melted_reconnection_tries";
+    private static final String MELTED_SERVER_HOSTNAME = "melted_server_hostname";
+    private static final String MELTED_SERVER_PORT = "melted_server_port"; 
+    private static final String MELTED_RECONNECTION_TIMEOUT = "melted_reconnection_timeout"; 
+    private static final String MELTED_RECONNECTION_TRIES = "melted_reconnection_tries"; 
     /**
      * This key defines the duration of melted playlist. This is used for
      * avoiding overloading melted's playlist.
@@ -46,7 +46,7 @@ public class ConfigurationManager {
      * In Minutes
      */
     private static final String MELTED_APPENDER_WORKER_FREQ = "melted_appender_worker_freq";
-    private static final String MELT_PATH_KEY = "melt_path";
+    private static final String MELT_PATH = "melt_path";
 
     /**
      * The path of the default media that will be played when there's nothing else loaded.
@@ -61,9 +61,9 @@ public class ConfigurationManager {
      */
     private static final String MLT_SPACERS_PATH = "mlt_spacers_path";
 
-    private static final String FILTER_SERVER_URL_KEY = "filter_server_hostname";
+    private static final String FILTER_SERVER_HOSTNAME = "filter_server_hostname";
 
-    private static final String BASH_TIMEOUT_KEY = "bash_timeout_ms";
+    private static final String BASH_TIMEOUT_MS = "bash_timeout_ms"; 
 
     /**
      * URL of mp-playout-api. Must be a valid URL.
@@ -114,7 +114,7 @@ public class ConfigurationManager {
     public void init(Logger logger){
         properties = setDefaultValues(new Properties());
         boolean ioError = false;
-
+        
         try (FileInputStream configFile = new FileInputStream(CONFIG_PATH)) {
             properties.load(configFile);
         }
@@ -142,28 +142,28 @@ public class ConfigurationManager {
      * @param p Properties object where to load the default values
      * @return Returns the Properties object received as an argument for convenience
      */
-    private Properties setDefaultValues(Properties p){
-        p.setProperty(REDIS_HOST_KEY, "localhost");
-        p.setProperty(REDIS_PORT_KEY, "6379");
-        p.setProperty(REDIS_PCCP_CHANNEL_KEY, "PCCP");
-        p.setProperty(REDIS_FSCP_CHANNEL_KEY, "FSCP");
-        p.setProperty(REDIS_PCR_CHANNEL_KEY, "PCR");
-        p.setProperty(REDIS_MSTA_CHANNEL_KEY, "MSTA");
-        p.setProperty(REDIS_RECONNECTION_TIMEOUT_KEY, "1000");
+    public Properties setDefaultValues(Properties p){
+        p.setProperty(REDIS_SERVER_HOSTNAME, "localhost");
+        p.setProperty(REDIS_SERVER_PORT, "6379");
+        p.setProperty(REDIS_PCCP_CHANNEL, "PCCP");
+        p.setProperty(REDIS_FSCP_CHANNEL, "FSCP");
+        p.setProperty(REDIS_PCR_CHANNEL, "PCR");
+        p.setProperty(REDIS_MSTA_CHANNEL, "MSTA");
+        p.setProperty(REDIS_RECONNECTION_TIMEOUT, "1000");
 
-        p.setProperty(MELTED_HOST_KEY, "localhost");
-        p.setProperty(MELTED_PORT_KEY, "5250");
-        p.setProperty(MELTED_RECONNECTION_TIMEOUT_KEY, "1000");
-        p.setProperty(MELTED_RECONNECTION_TRIES_KEY, "0");
+        p.setProperty(MELTED_SERVER_HOSTNAME, "localhost");
+        p.setProperty(MELTED_SERVER_PORT, "5250");
+        p.setProperty(MELTED_RECONNECTION_TIMEOUT, "1000");
+        p.setProperty(MELTED_RECONNECTION_TRIES, "0");
         p.setProperty(MELTED_PLAYLIST_MAX_DURATION, "120"); // 2 hs
         p.setProperty(MELTED_APPENDER_WORKER_FREQ, "5");    // 5 mins
 
         p.setProperty(DEFAULT_MEDIA_PATH, "/usr/local/magma-playout/default.mlt");
         p.setProperty(MLT_SPACERS_PATH, "/usr/local/magma-playout/spacers/");
 
-        p.setProperty(MELT_PATH_KEY, "/usr/bin/melt/melt");
-        p.setProperty(FILTER_SERVER_URL_KEY, "http://localhost:3001/filter-banner.html");
-        p.setProperty(BASH_TIMEOUT_KEY, "5000");
+        p.setProperty(MELT_PATH, "/usr/bin/melt/melt");
+        p.setProperty(FILTER_SERVER_HOSTNAME, "http://localhost:3001/filter-banner.html");
+        p.setProperty(BASH_TIMEOUT_MS, "5000");
 
         p.setProperty(PLAYOUT_API_URL, "http://localhost:8001/api/");
         p.setProperty(ADMIN_API_URL, "http://localhost:8080/api/");
@@ -181,47 +181,47 @@ public class ConfigurationManager {
 
     
     public String getRedisHost(){
-        return properties.getProperty(REDIS_HOST_KEY);
+        return properties.getProperty(REDIS_SERVER_HOSTNAME);
     }
     
     public int getRedisPort(){
-        return Integer.parseInt(properties.getProperty(REDIS_PORT_KEY));
+        return Integer.parseInt(properties.getProperty(REDIS_SERVER_PORT));
     }
 
     public String getRedisPccpChannel(){
-        return properties.getProperty(REDIS_PCCP_CHANNEL_KEY);
+        return properties.getProperty(REDIS_PCCP_CHANNEL);
     }
 
     public String getRedisFscpChannel(){
-        return properties.getProperty(REDIS_FSCP_CHANNEL_KEY);
+        return properties.getProperty(REDIS_FSCP_CHANNEL);
     }
 
     public String getRedisPcrChannel(){
-        return properties.getProperty(REDIS_PCR_CHANNEL_KEY);
+        return properties.getProperty(REDIS_PCR_CHANNEL);
     }
 
     public String getRedisMstaChannel(){
-        return properties.getProperty(REDIS_MSTA_CHANNEL_KEY);
+        return properties.getProperty(REDIS_MSTA_CHANNEL);
     }
     
     public int getRedisReconnectionTimeout(){
-        return Integer.parseInt(properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY));
+        return Integer.parseInt(properties.getProperty(REDIS_RECONNECTION_TIMEOUT));
     }
 
     public String getMeltedHost(){
-        return properties.getProperty(MELTED_HOST_KEY);
+        return properties.getProperty(MELTED_SERVER_HOSTNAME);
     }
 
     public int getMeltedPort(){
-        return Integer.parseInt(properties.getProperty(MELTED_PORT_KEY));
+        return Integer.parseInt(properties.getProperty(MELTED_SERVER_PORT));
     }
 
     public int getMeltedReconnectionTimeout(){
-        return Integer.parseInt(properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY));
+        return Integer.parseInt(properties.getProperty(MELTED_RECONNECTION_TIMEOUT));
     }
 
     public int getMeltedReconnectionTries(){
-        return Integer.parseInt(properties.getProperty(MELTED_RECONNECTION_TRIES_KEY));
+        return Integer.parseInt(properties.getProperty(MELTED_RECONNECTION_TRIES));
     }
 
     public int getMeltedPlaylistMaxDuration(){
@@ -233,7 +233,7 @@ public class ConfigurationManager {
     }
 
     public String getMeltPath(){
-        return properties.getProperty(MELT_PATH_KEY);
+        return properties.getProperty(MELT_PATH);
     }
 
     public String getDefaultMediaPath(){
@@ -245,11 +245,11 @@ public class ConfigurationManager {
     }
 
     public String getFilterServerHost(){
-        return properties.getProperty(FILTER_SERVER_URL_KEY);
+        return properties.getProperty(FILTER_SERVER_HOSTNAME);
     }
 
     public int getMeltXmlTimeout(){
-        return Integer.parseInt(properties.getProperty(BASH_TIMEOUT_KEY));
+        return Integer.parseInt(properties.getProperty(BASH_TIMEOUT_MS));
     }
 
     public String getPlayoutAPIRestBaseUrl(){
@@ -299,24 +299,24 @@ public class ConfigurationManager {
         logger.log(Level.INFO,
             "Loaded configuration:\n"
             +"\n\tconfig_path: " + ConfigurationManager.CONFIG_PATH
-            +"\n\tredis_host_key: " + properties.getProperty(REDIS_HOST_KEY)
-            +"\n\tredis_port_key: " + properties.getProperty(REDIS_PORT_KEY)
-            +"\n\tredis_pccp_channel_key: " + properties.getProperty(REDIS_PCCP_CHANNEL_KEY)
-            +"\n\tredis_fscp_channel_key: " + properties.getProperty(REDIS_FSCP_CHANNEL_KEY)
-            +"\n\tredis_pcr_channel_key: " + properties.getProperty(REDIS_PCR_CHANNEL_KEY)
-            +"\n\tredis_msta_channel_key: " + properties.getProperty(REDIS_MSTA_CHANNEL_KEY)
-            +"\n\tredis_reconnection_timeout_key: " + properties.getProperty(REDIS_RECONNECTION_TIMEOUT_KEY)
-            +"\n\tmelted_host_key: " + properties.getProperty(MELTED_HOST_KEY)
-            +"\n\tmelted_port_key: " + properties.getProperty(MELTED_PORT_KEY)
-            +"\n\tmelted_reconnection_timeout_key: " + properties.getProperty(MELTED_RECONNECTION_TIMEOUT_KEY)
-            +"\n\tmelted_reconnection_tries_key: " + properties.getProperty(MELTED_RECONNECTION_TRIES_KEY)
+            +"\n\tredis_server_hostname: " + properties.getProperty(REDIS_SERVER_HOSTNAME)
+            +"\n\tredis_server_port: " + properties.getProperty(REDIS_SERVER_PORT)
+            +"\n\tredis_pccp_channel: " + properties.getProperty(REDIS_PCCP_CHANNEL)
+            +"\n\tredis_fscp_channel: " + properties.getProperty(REDIS_FSCP_CHANNEL)
+            +"\n\tredis_pcr_channel: " + properties.getProperty(REDIS_PCR_CHANNEL)
+            +"\n\tredis_msta_channel: " + properties.getProperty(REDIS_MSTA_CHANNEL)
+            +"\n\tredis_reconnection_timeout: " + properties.getProperty(REDIS_RECONNECTION_TIMEOUT)
+            +"\n\tmelted_server_hostname: " + properties.getProperty(MELTED_SERVER_HOSTNAME)
+            +"\n\tmelted_server_port: " + properties.getProperty(MELTED_SERVER_PORT)
+            +"\n\tmelted_reconnection_timeout: " + properties.getProperty(MELTED_RECONNECTION_TIMEOUT)
+            +"\n\tmelted_reconnection_tries: " + properties.getProperty(MELTED_RECONNECTION_TRIES)
             +"\n\tmelted_playlist_max_duration: " + properties.getProperty(MELTED_PLAYLIST_MAX_DURATION)
             +"\n\tmelted_appender_worker_freq: " + properties.getProperty(MELTED_APPENDER_WORKER_FREQ)
-            +"\n\tmelt_path_key: " + properties.getProperty(MELT_PATH_KEY)
+            +"\n\tmelt_path: " + properties.getProperty(MELT_PATH)
             +"\n\tdefault_media_path: " + properties.getProperty(DEFAULT_MEDIA_PATH)
             +"\n\tmlt_spacers_path: " + properties.getProperty(MLT_SPACERS_PATH)
-            +"\n\tfilter_server_url_key: " + properties.getProperty(FILTER_SERVER_URL_KEY)
-            +"\n\tbash_timeout_key: " + properties.getProperty(BASH_TIMEOUT_KEY)
+            //+"\n\tfilter_server_url_key: " + properties.getProperty(FILTER_SERVER_URL_KEY)
+            +"\n\tbash_timeout_ms: " + properties.getProperty(BASH_TIMEOUT_MS)
             +"\n\tmedias_fps: " + properties.getProperty(MEDIAS_FPS)
             +"\n\tdevourer_input_dir: " + properties.getProperty(DEVOURER_INPUT_DIR)
             +"\n\tdevourer_output_dir: " + properties.getProperty(DEVOURER_OUTPUT_DIR)
