@@ -80,6 +80,11 @@ public class ConfigurationManager {
     private static final String MEDIAS_FPS = "medias_fps";
     
     /**
+     * The thumbnails directory relative to the webroot that will be stored in the DB
+     */
+    private static final String GUI_THUMB_DIR = "gui_thumb_dir";
+    
+    /**
      * MP-Devourer
      */
     private static final String MLT_FRAMEWORK_DIR = "mlt_framework_dir";
@@ -88,6 +93,7 @@ public class ConfigurationManager {
     private static final String DEVOURER_MEDIA_DIR = "devourer_media_dir";
     private static final String DEVOURER_THUMB_DIR = "devourer_thumb_dir";
     private static final String DEVOURER_FFMPEG_ARGS = "devourer_ffmpeg_args";
+    private static final String DEVOURER_THUMBS_QTY = "devourer_thumbs_qty";
     
     private Properties properties;
 
@@ -171,7 +177,11 @@ public class ConfigurationManager {
         p.setProperty(DEVOURER_MEDIA_DIR, ""); // Not used at the moment. Possiblly to store a remote path
         p.setProperty(DEVOURER_THUMB_DIR, "EDIT ME!--> /XXX/mp-installer/magma-playout/gui/mp-ui-playout/src/assets/img");
         p.setProperty(DEVOURER_FFMPEG_ARGS, "-f avi -c:v libx264 -qp 0");
+        p.setProperty(DEVOURER_THUMBS_QTY, "10");
+        
         p.setProperty(MLT_FRAMEWORK_DIR, "EDIT ME!--> /XXX/mp-installer//MagmaPlayout/core/melted/XXXXXXX/bin/ffmpeg"); //TODO agregar esta config en el script de installer
+        
+        p.setProperty(GUI_THUMB_DIR, "/assets/img/media-thumbnails/");
         
         return p;
     }
@@ -272,6 +282,10 @@ public class ConfigurationManager {
     public String getDevourerThumbDir() {
         return properties.getProperty(DEVOURER_THUMB_DIR);
     }
+    
+    public String getDevourerThumbsQty() {
+        return properties.getProperty(DEVOURER_THUMBS_QTY);
+    }
 
     public String getMltFrameworkPath() {
         return properties.getProperty(MLT_FRAMEWORK_DIR);
@@ -281,6 +295,9 @@ public class ConfigurationManager {
         return properties.getProperty(DEVOURER_FFMPEG_ARGS);
     }
     
+    public String getGuiThumbDir() {
+        return properties.getProperty(GUI_THUMB_DIR);
+    }
     
     /**
      * Logs all the parameters loaded.
@@ -318,6 +335,8 @@ public class ConfigurationManager {
             +"\n\tdevourer_ffmpeg_args: " + properties.getProperty(DEVOURER_FFMPEG_ARGS)
             +"\n\tplayout_api_url: " + properties.getProperty(PLAYOUT_API_URL)
             +"\n\tadmin_api_url: " + properties.getProperty(ADMIN_API_URL)
+            +"\n\tgui_thumb_dir: " + properties.getProperty(GUI_THUMB_DIR)
+            +"\n\tdevourer_thumbs_qty: " + properties.getProperty(DEVOURER_THUMBS_QTY)
             +"\n"
         );
     }
